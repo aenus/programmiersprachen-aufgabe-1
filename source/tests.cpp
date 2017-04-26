@@ -49,7 +49,7 @@ double volume (double rad, double alt){
   return volume;  
 }
  double surface (double rad, double alt){    
-  double surface = 2*M_PI*rad*rad*2*M_PI*rad*alt;
+  double surface = 2*M_PI*rad*rad+2*M_PI*rad*alt;
   return surface;
  }
 
@@ -78,7 +78,7 @@ long checksum (long input){
         while (input>0){
             int n = input%10;
             sum += n;
-            input -= m;
+            input -= n;
             input = input /10;
         }
 return sum;
@@ -95,11 +95,11 @@ else
 TEST_CASE ("milesTest" , "[milesToKilometer]" )
 {
   REQUIRE ( milesToKilometer (1) == 1.609344);
-  REQUIRE ( milesToKilometer (100) ==160,9344);
+  REQUIRE ( milesToKilometer (100) ==160.9344);
 }
 TEST_CASE ("gcdTest" , "[gcd]" )
 {
-  REQUIRE ( gcd (2 ,6) == 3);
+  REQUIRE ( gcd (2 ,6) == 2);
   REQUIRE ( gcd (9 ,12) == 3);
   REQUIRE ( gcd (24 ,36) == 12);
 }
@@ -127,9 +127,9 @@ TEST_CASE ("surfTest" , "surface" )
 }
 TEST_CASE ("binTest" , "nCr" )
 {
-  REQUIRE ( nCr (10,3) == 120 );
-  REQUIRE ( nCr (10,5) == 252 );
-  REQUIRE ( nCr (10,0) == 1 );
+  REQUIRE ( bin (10,3) == 120 );
+  REQUIRE ( bin (10,5) == 252 );
+  REQUIRE ( bin (10,0) == 1 );
 }
 
 
